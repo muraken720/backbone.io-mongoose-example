@@ -12,7 +12,7 @@ You need to install MongoDB first.
 Usage
 -----
 
-On the server: Original: https://github.com/scttnlsn/backbone.io/blob/master/examples/basic.js
+On the server: (Original -> https://github.com/scttnlsn/backbone.io/blob/master/examples/basic.js)
 
 	var express = require('express');
 	var mongoose = require('mongoose');
@@ -24,7 +24,6 @@ On the server: Original: https://github.com/scttnlsn/backbone.io/blob/master/exa
 	var http = require('http');
 	var server = http.createServer(app);
 	server.listen(3000);
-
 	console.log('http://localhost:3000/');
 
 	var db = mongoose.createConnection('mongodb://localhost/backboneio');
@@ -45,7 +44,8 @@ On the server: Original: https://github.com/scttnlsn/backbone.io/blob/master/exa
 	backboneio.listen(server, { messages: messages });
 
 
-On the client: 	Original: https://github.com/scttnlsn/backbone.io/blob/master/examples/index.html
+
+On the client: (Original -> https://github.com/scttnlsn/backbone.io/blob/master/examples/index.html)
 
 	var Message = Backbone.Model.extend({
 
