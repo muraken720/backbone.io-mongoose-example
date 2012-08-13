@@ -1,7 +1,5 @@
-Backbone.IO MongooseStore Example
+Backbone.IO's MongooseStore Example
 =================================
-
-Backbone.IO's MongooseStore Example.
 
 Setup
 -----
@@ -14,7 +12,7 @@ You need to install MongoDB first.
 Usage
 -----
 
-On the server:
+On the server: Original: https://github.com/scttnlsn/backbone.io/blob/master/examples/basic.js
 
 	var express = require('express');
 	var mongoose = require('mongoose');
@@ -46,10 +44,8 @@ On the server:
 
 	backboneio.listen(server, { messages: messages });
 
-Original: https://github.com/scttnlsn/backbone.io/blob/master/examples/basic.js
 
-
-On the client:
+On the client: 	Original: https://github.com/scttnlsn/backbone.io/blob/master/examples/index.html
 
 	var Message = Backbone.Model.extend({
 
@@ -62,5 +58,3 @@ On the client:
 	  }
 
 	});
-
-Original: https://github.com/scttnlsn/backbone.io/blob/master/examples/index.html
