@@ -27,3 +27,49 @@ messages.use(function(req, res, next) {
 messages.use(backboneio.middleware.mongooseStore(Model));
 
 backboneio.listen(server, { messages: messages });
+
+
+var mubsub = require('mubsub');
+var client = mubsub('mongodb://localhost:27017/backboneio');
+var channel = client.channel('mubsub');
+
+channel.subscribe({ type: 'create' }, function(doc) {
+    console.log(doc.type);
+    Model.create(doc.model, function(err) {
+	    if(err) {
+		    console.log(err.message);
+		    return;
+		  }
+	    console.log(doc.model);
+	    messages.emit('created', doc.model);
+	  });
+});
+
+channel.subscribe({ type: 'delete' }, function(doc) {
+    console.log(doc.type);
+    Model.remove( {_id: doc.model._id}, function(err) {
+	    if(err) {
+		    console.log(err.message);
+		    return;
+		  }
+	    console.log(doc.model);
+	    messages.emit('deleted', doc.model);
+	  });
+});
+
+channel.subscribe({ type: 'update' }, function(doc) {
+    console.log(doc.type);
+		var model = {};
+		for (var key in doc.model) {
+		  model[key] = doc.model[key];
+		}
+		delete model._id;
+		Model.update( { _id: doc.model._id }, { '$set': model }, function(err) {
+	    if(err) {
+		    console.log(err.message);
+		    return;
+		  }
+	    console.log(doc.model);
+	    messages.emit('updated', doc.model);
+	  });
+});

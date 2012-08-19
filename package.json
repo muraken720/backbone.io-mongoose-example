@@ -8,6 +8,7 @@
   "dependencies": {
     "backbone.io": "~0.3.1",
     "express": "~3.0.0rc2",
-    "mongoose": "~3.0.1"
+    "mongoose": "~3.0.1",
+    "mubsub": "~0.2.0"
   }
 }
